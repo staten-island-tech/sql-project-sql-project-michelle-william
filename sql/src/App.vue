@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
@@ -14,43 +14,29 @@ import { RouterLink, RouterView } from 'vue-router'
   <RouterView />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<style scoped></style> -->
+<script setup>
+import { onMounted, ref } from 'vue'
+import Account from './components/Account.vue'
+import Auth from './components/Auth.vue'
+import { supabase } from './supabase'
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+const session = ref()
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+onMounted(() => {
+  supabase.auth.getSession().then(({ data }) => {
+    session.value = data.session
+  })
 
-nav a:first-of-type {
-  border: 0;
-}
+  supabase.auth.onAuthStateChange((_, _session) => {
+    session.value = _session
+  })
+})
+</script>
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+<template>
+  <div class="container" style="padding: 50px 0 100px 0">
+    <Account v-if="session" :session="session" />
+    <Auth v-else />
+  </div>
+</template>

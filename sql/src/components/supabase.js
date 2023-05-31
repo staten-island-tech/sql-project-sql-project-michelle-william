@@ -1,22 +1,12 @@
+VITE_SUPABASE_URL = 'https://qtbwblsfjwdtewafoqph.supabase.co'
+VITE_SUPABASE_ANON_KEY =
+  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+    .eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0YndibHNmandkdGV3YWZvcXBoIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODM4OTk1OTAsImV4cCI6MTk5OTQ3NTU5MH0
+    .aHBemK6VllFXBqZII4cBXwnYYvVJkasV4pQ - oElV0zQ
+
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = 'https://qtbwblsfjwdtewafoqph.supabase.co'
-const supabaseKey =
-  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
-    .eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0YndibHNmandkdGV3YWZvcXBoIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4Mzg5OTU5MCwiZXhwIjoxOTk5NDc1NTkwfQ
-    .XKC7DnNmYD86D_5Vefi1rLrEiv7Z9XC248AFlpKgoNY
-const supabase = createClient(supabaseUrl, supabaseKey)
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
-//signing ing//
-async function signInWithEmail() {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: 'example@email.com',
-    password: 'example-password'
-  })
-}
-
-//sign out//
-
-async function signOut() {
-  const { error } = await supabase.auth.signOut()
-}
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
