@@ -1,42 +1,47 @@
-<!-- <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
-<template>
-  <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/Positions">Positions</RouterLink>
-      <RouterLink to="/Signin">Sign-In</RouterLink>
-    </nav>
-  </header>
-
-  <RouterView />
-</template>
-
-<style scoped></style> -->
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import Account from './components/Account.vue'
-import Auth from './components/Auth.vue'
+import auth from './components/Auth.vue'
 import { supabase } from './supabase'
 
-const session = ref()
+const email = ref('')
+const password = ref('')
 
-onMounted(() => {
-  supabase.auth.getSession().then(({ data }) => {
-    session.value = data.session
-  })
+const signUp = async function () {
+  console.log(supabase.auth.signUp)
+  try {
+    console.log('ran')
+    await supabase.auth.signUp({
+      email: email.value,
+      password: password.value
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-  supabase.auth.onAuthStateChange((_, _session) => {
-    session.value = _session
-  })
-})
+/* const signIn = async function () {
+  console.log(supabase.auth.signIn)
+  try {
+    console.log('ran')
+    const { user, session, error} =
+    await supabase.auth.signIn({
+      email: email.value,
+      password: password.value
+    });
+   if (error) {
+    console.log(error);
+  } else {
+    store
+  }
+} */
 </script>
 
 <template>
   <div class="container" style="padding: 50px 0 100px 0">
-    <Account v-if="session" :session="session" />
-    <Auth v-else />
+    <button @click="signUp">Sign Up</button>
+    <button @click="signIn">Sign In</button>
   </div>
+  <input v-model="email" type="input" placeholder="Enter Email Here" />
+  <input v-model="password" type="input" placeholder="Enter Password Here" />
 </template>
