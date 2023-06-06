@@ -1,4 +1,4 @@
-import supabase from './supabase.js'
+import supabase from './config/supabase'
 import { useEffect, useState } from 'react'
 
 const Home = () => {

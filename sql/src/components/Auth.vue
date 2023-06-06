@@ -1,6 +1,6 @@
-<script setup>
+<!-- <script setup>
 import { ref } from 'vue'
-import { supabase } from '../supabase'
+import { supabase } from '../config/supabase'
 
 const loading = ref(false)
 const email = ref('')
@@ -41,4 +41,4 @@ const handleLogin = async () => {
       </div>
     </div>
   </form>
-</template>
+</template> -->
