@@ -3,7 +3,9 @@
 </template>
 
 <script>
-export default {}
+import supabase from '../supabase'
+
+const { error } = await supabase.from('player').insert([{ id: 1 }])
 </script>
 
 <style lang="scss" scoped></style>

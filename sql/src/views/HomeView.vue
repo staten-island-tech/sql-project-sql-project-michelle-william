@@ -6,6 +6,7 @@
 
 <script>
 import supabase from '../supabase'
+import { ref } from 'vue'
 
 const data = await supabase.from('players').select()
 
