@@ -44,3 +44,28 @@ const signUp = async function () {
   <input v-model="email" type="input" placeholder="Enter Email Here" />
   <input v-model="password" type="input" placeholder="Enter Password Here" />
 </template>
+
+<style scoped>
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(114, 76, 76, 0.87);
+  background-color: #db7a65;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+</style>
