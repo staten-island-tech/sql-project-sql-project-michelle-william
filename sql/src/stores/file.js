@@ -1,4 +1,3 @@
-<script setup>
 import { supabase } from '../lib/supabaseClient.js'
 import { ref, onMounted } from 'vue'
 import { useSupabaseStore } from '../stores/counter'
@@ -14,4 +13,3 @@ async function AddCart(x) {
 getCards()
 console.log(store.characters)
 getCards()
-</script>
