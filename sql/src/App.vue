@@ -1,84 +1,47 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+import Account from './components/Account.vue'
+import auth from './components/Auth.vue'
+import { supabase } from './supabase'
+
+const email = ref('')
+const password = ref('')
+
+const signUp = async function () {
+  console.log(supabase.auth.signUp)
+  try {
+    console.log('ran')
+    await supabase.auth.signUp({
+      email: email.value,
+      password: password.value
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+/* const signIn = async function () {
+  console.log(supabase.auth.signIn)
+  try {
+    console.log('ran')
+    const { user, session, error} =
+    await supabase.auth.signIn({
+      email: email.value,
+      password: password.value
+    });
+   if (error) {
+    console.log(error);
+  } else {
+    store
+  }
+} */
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">Console.log Supabase Data</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="container" style="padding: 50px 0 100px 0">
+    <button @click="signUp">Sign Up</button>
+    <button @click="signIn">Sign In</button>
+  </div>
+  <input v-model="email" type="input" placeholder="Enter Email Here" />
+  <input v-model="password" type="input" placeholder="Enter Password Here" />
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
