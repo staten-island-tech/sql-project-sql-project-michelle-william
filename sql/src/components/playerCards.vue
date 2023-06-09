@@ -25,6 +25,20 @@ export default {
     aces: Number,
     plyrnmbr: Number,
     assists: Number
+  },
+  mounted() {
+    this.fetchPlayerData()
+  },
+  methods: {
+    async fetchPlayerData() {
+      const { data, error } = await this.$supabase.from('players').select()
+
+      if (error) {
+        console.error(error)
+      } else if (data.length > 0) {
+        this.player = data[0]
+      }
+    }
   }
 }
 </script>

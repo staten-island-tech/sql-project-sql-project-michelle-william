@@ -4,8 +4,12 @@
 
 <script>
 import supabase from '../supabase'
-
-const { error } = await supabase.from('player').insert([{ id: 1 }])
+const { data, error } = await supabase.from('players').select()
+if (error) {
+  console.error(error)
+} else {
+  console.log(data)
+}
 </script>
 
 <style lang="scss" scoped></style>
