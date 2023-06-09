@@ -3,10 +3,8 @@
 </template>
 
 <script>
-import supabase from '../config/supabase'
+export default {}
+import supabase from '../supabase'
 
 const { data, error } = await supabase.from()
 </script>
-
-<style lang="scss" scoped>
-</style>
