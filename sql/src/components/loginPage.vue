@@ -1,7 +1,6 @@
 <script>
 import { ref } from 'vue'
 import { useStore } from '../stores';
-export default {
 const store = useStore();
 
 const email = ref('');
@@ -17,7 +16,6 @@ return {
   password,
   login,
 };
-},
 </script>
 
 <template>
