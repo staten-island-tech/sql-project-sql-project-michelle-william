@@ -3,9 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import PositionsView from '../Views/PositionsView.vue'
 import SigninView from '../Views/SigninView.vue'
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
+const routes = [
     {
       path: '/',
       name: 'home',
@@ -14,7 +12,10 @@ const router = createRouter({
     {
       path: '/Positions',
       name: 'Positions',
-      component: PositionsView
+      component: PositionsView,
+      meta: {
+        requiresAuth: true,
+      }
     },
     {
       path: '/Signin',
