@@ -1,6 +1,14 @@
-<!-- <template>
-  <div>
-    <h1>Volleyball Team Builder</h1>
+<template>
+  <div class="player-list">
+    <h1>Player Stats</h1>
+    <div class="card-list">
+      <div class="card" v-for="player in players" :key="player.id">
+        <h2 class="player-name">{{ player.Firstname }}</h2>
+        <div class="stat"><span class="stat-label">Digs:</span> {{ player.Digs }}</div>
+        <div class="stat"><span class="stat-label">Assists:</span> {{ player.Assists }}</div>
+        <div class="stat"><span class="stat-label">Aces:</span> {{ player.Aces }}</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,27 +24,9 @@ console.log(data)
 </script>
 
 <style lang="scss" scoped></style>
- -->
+
 <template>
-  <div class="whatever">
-    <h2 v-if="!ready">Click to start</h2>
-    <div class="home"></div>
-  </div>
+  <div></div>
 </template>
-
-<script>
-import PlayerCards from '../components/playerCards.vue'
-import { ref } from 'vue'
-import counter from '../stores/counter'
-import { supabase } from '../supabase'
-
-export default {
-  name: 'players',
-  components: {
-    card
-  },
-  data() {}
-}
-</script>
 
 <style lang="scss" scoped></style>

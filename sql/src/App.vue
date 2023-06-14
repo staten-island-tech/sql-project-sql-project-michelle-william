@@ -60,22 +60,6 @@ const signUp = async function () {
     console.log(error)
   }
 }
-
-/* const signIn = async function () {
-  console.log(supabase.auth.signIn)
-  try {
-    console.log('ran')
-    const { user, session, error} =
-    await supabase.auth.signIn({
-      email: email.value,
-      password: password.value
-    });
-   if (error) {
-    console.log(error);
-  } else {
-    store
-  }
-} */
 </script>
 
 <template>
@@ -84,3 +68,19 @@ const signUp = async function () {
     <RouterView />
   </div>
 </template>
+
+<style>
+@media (min-width: 1024px) {
+  .inputs {
+    width: 100%;
+    align-content: center;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 300px;
+  }
+}
+</style>
+
+<!-- const signIn = async function () { console.log(supabase.auth.signIn) try { console.log('ran') const
+{ user, session, error} = await supabase.auth.signIn({ email: email.value, password: password.value
+}); if (error) { console.log(error); } else { store } } -->
