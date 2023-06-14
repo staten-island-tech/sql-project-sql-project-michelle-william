@@ -1,15 +1,16 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
+import { reactive, ref } from 'vue'
 
-export const useCounterStore = defineStore('counter', () => {
-  state: () => {
-    return {}
-  }
-  /* const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
-
-  return { count, doubleCount, increment } */
+const state = reactive({
+  user: null,
+  userScore: ref([]),
+  allUsers: ref([])
 })
+const methods = {
+  setUser(payload) {
+    state.user = payload ? payload.user : null
+  }
+}
+export default {
+  state,
+  methods
+}

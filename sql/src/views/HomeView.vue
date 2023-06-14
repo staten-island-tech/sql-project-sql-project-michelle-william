@@ -18,11 +18,25 @@ console.log(data)
 <style lang="scss" scoped></style>
  -->
 <template>
-  <div></div>
+  <div class="whatever">
+    <h2 v-if="!ready">Click to start</h2>
+    <div class="home"></div>
+  </div>
 </template>
 
 <script>
-export default {}
+import PlayerCards from '../components/playerCards.vue'
+import { ref } from 'vue'
+import counter from '../stores/counter'
+import { supabase } from '../supabase'
+
+export default {
+  name: 'players',
+  components: {
+    card
+  },
+  data() {}
+}
 </script>
 
 <style lang="scss" scoped></style>
