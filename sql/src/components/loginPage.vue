@@ -1,21 +1,20 @@
 <script>
 import { ref } from 'vue'
-import { useStore } from '../stores';
-const store = useStore();
+import { useStore } from '../stores'
+const store = useStore()
 
-const email = ref('');
-const password = ref('');
-
+const email = ref('')
+const password = ref('')
 
 const login = async (e) => {
-  e.preventDefault();
- await.store.signInWithEmail(email.value, password.value);
-};
+  e.preventDefault()
+  await store.signInWithEmail(email.value, password.value)
+}
 return {
   email,
   password,
-  login,
-};
+  login
+}
 </script>
 
 <template>
