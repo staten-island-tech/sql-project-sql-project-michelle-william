@@ -1,69 +1,87 @@
 <script>
-import Navigation from './components/Navigation.vue'
+// import router from './router'
 import { RouterLink, RouterView } from 'vue-router'
-import { ref } from 'vue'
-import counter from './stores/counter'
-import { supabase } from './supabase'
-export default {
-  components: {
-    Navigation
-  },
-  setup() {
-    const appReady = ref(null)
-    const getCurrentUser = async () => {
-      try {
-        const { player, session } = await supabase.auth.getSession()
-
-        if (user) {
-          const { data, error } = await supabase.auth.getUser(user.id)
-          console.log('user logged in')
-          if (error) {
-            throw error
-          }
-
-          console.log('User:', data)
-        } else {
-          console.log('No user logged in.')
-          appReady.value = true
-        }
-      } catch (error) {
-        console.error('Error retrieving user:', error.message)
-      }
-    }
-
-    // Call the function to get the current user
-    getCurrentUser()
-
-    supabase.auth.onAuthStateChange((_, session) => {
-      console.log('hello')
-      counter.methods.setUser(session)
-      appReady.value = true
-    })
-
-    return { appReady }
-  }
-}
 </script>
 
 <template>
-  <div class="wrapper" v-if="appReady">
-    <Navigation />
+  <div class="web-heading">
     <RouterView />
+    <div class="links-div">
+      <div class="title">
+        <h1 class="web-title">Volleyball Team Builder</h1>
+      </div>
+      <nav>
+        <RouterLink class="link links" to="/">Home</RouterLink>
+      </nav>
+      <nav>
+        <RouterLink class="link links" to="/about">About Us</RouterLink>
+      </nav>
+      <nav>
+        <RouterLink class="link links" to="/HousekeepersView">Players</RouterLink>
+      </nav>
+    </div>
   </div>
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .inputs {
-    width: 100%;
-    align-content: center;
-    display: flex;
-    justify-content: space-evenly;
-    margin: 300px;
-  }
+.web-heading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #301934;
+  padding: 30px;
+}
+
+.title {
+  color: #5c1ad9;
+}
+.web-title {
+  border-right: white 4px solid;
+  padding: 30px;
+  background-color: pink;
+  color: #5c1ad9;
+  font-weight: bold;
+}
+
+.link {
+  border: black 3px solid;
+  padding: 5px;
+  margin-top: 5%;
+  border-radius: 1px;
+  background-color: #5c1ad9;
+  border-radius: 20px;
+  color: white;
+  font-size: 18px;
+  margin: 50px;
+}
+
+.links {
+  border-right: black 3px solid;
+}
+
+.links-div {
+  width: 100%;
+  align-content: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.login {
+  margin-left: 100px;
+}
+
+.signup {
+  margin-right: 100px;
+}
+
+.user {
+  border: black 3px solid;
+  padding: 5px;
+  margin-top: 5%;
+  border-radius: 1px;
+  background-color: #452784;
+  border-radius: 20px;
+  color: violet;
 }
 </style>
-
-<!-- const signIn = async function () { console.log(supabase.auth.signIn) try { console.log('ran') const
-{ user, session, error} = await supabase.auth.signIn({ email: email.value, password: password.value
-}); if (error) { console.log(error); } else { store } } -->
