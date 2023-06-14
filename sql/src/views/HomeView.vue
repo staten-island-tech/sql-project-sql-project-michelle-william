@@ -76,7 +76,7 @@ export default {
       try {
         const { data, error } = await supabase
           .from('players')
-          .select('Firstname, Digs, Assists, Aces')
+          .select('Firstname, Digs, Kills, Blocks, Assists, Aces')
         if (error) throw error
         players.value = data
         console.log(data)
