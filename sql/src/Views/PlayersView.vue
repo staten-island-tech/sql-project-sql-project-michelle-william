@@ -3,10 +3,20 @@
     <h1>Player Stats</h1>
     <div class="card-list">
       <div class="card" v-for="player in players" :key="player.id">
-        <h2 class="player-name">{{ player.Firstname }}</h2>
+        <h2 class="player-firstname">{{ player.Firstname }}</h2>
+        <h2 class="player-lastname">{{ player.Lastname }}</h2>
+        <div class="stat">
+          <span class="stat-label">Player Number:</span> {{ player.PlayerNumber }}
+        </div>
         <div class="stat"><span class="stat-label">Digs:</span> {{ player.Digs }}</div>
-        <div class="stat"><span class="stat-label">Assists:</span> {{ player.Assists }}</div>
-        <div class="stat"><span class="stat-label">Aces:</span> {{ player.Aces }}</div>
+        <div class="stat">
+          <div class="stat-label">Kills:</div>
+          {{ player.Kills }}
+          <div class="stat"><span class="stat-label">Assists:</span> {{ player.Assists }}</div>
+          <div class="stat"><span class="stat-label">Blocks:</span> {{ player.Blocks }}</div>
+          <div class="stat"></div>
+          <div class="stat"><span class="stat-label">Aces:</span> {{ player.Aces }}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -14,13 +24,12 @@
 
 <style>
 .player-list {
-  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 10px;
 }
 
@@ -30,7 +39,7 @@ h1 {
 }
 
 .card {
-  width: 200px;
+  width: 400px;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 16px;
@@ -40,19 +49,18 @@ h1 {
 }
 
 .player-name {
-  font-size: 20px;
+  font-size: 30px;
   margin-bottom: 8px;
 }
 
 .stat {
   display: flex;
   align-items: center;
-  margin-bottom: 4px;
 }
 
 .stat-label {
   font-weight: bold;
-  margin-right: 4px;
+  margin-right: 2px;
 }
 </style>
 <script>
@@ -75,7 +83,9 @@ export default {
       try {
         const { data, error } = await supabase
           .from('players')
-          .select('Firstname, Digs, Kills, Blocks, Assists, Aces')
+          .select(
+            'Firstname, Lastname,Digs, Kills, Blocks, Assists, Aces, ServicePoints, PlayerNumber'
+          )
         if (error) throw error
         players.value = data
         console.log(data)

@@ -26,17 +26,7 @@ const signUp = async function () {
   <input v-model="password" type="input" placeholder="Enter Password Here" />
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .inputs {
-    width: 100%;
-    align-content: center;
-    display: flex;
-    justify-content: space-evenly;
-    margin: 300px;
-  }
-}
-</style>
+<style></style>
 
 <!-- const signIn = async function () { console.log(supabase.auth.signIn) try { console.log('ran') const
 { user, session, error} = await supabase.auth.signIn({ email: email.value, password: password.value

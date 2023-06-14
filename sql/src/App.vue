@@ -22,12 +22,12 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style>
 .web-heading {
-  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  background-color: #301934;
-  padding: 30px;
+
+  background-color: #516fc2;
+  color: black;
+  padding: 350px;
 }
 
 .title {
@@ -36,8 +36,8 @@ import { RouterLink, RouterView } from 'vue-router'
 .web-title {
   border-right: white 4px solid;
   padding: 30px;
-  background-color: pink;
-  color: antiquewhite;
+  background-color: rgb(115, 142, 196);
+  color: black;
   font-weight: bold;
 }
 
@@ -46,9 +46,9 @@ import { RouterLink, RouterView } from 'vue-router'
   padding: 5px;
   margin-top: 5%;
   border-radius: 1px;
-  background-color: aqua;
+  background-color: rgb(127, 151, 199);
   border-radius: 20px;
-  color: white;
+  color: rgb(18, 17, 17);
   font-size: 18px;
   margin: 50px;
 }
