@@ -20,7 +20,23 @@ const data = await supabase.from('players').select()
 
 let { data: players, error } = await supabase.from('players').insert([{ id: 1 }])
 
-console.log(data)
+// Fetch player stats on component mount
+onMounted(async () => {
+  try {
+    const { data, error } = await supabase
+      .from('players')
+      .select('Firstname, Digs, Kills, Blocks, Assists, Aces')
+    if (error) throw error
+    players.value = data
+    console.log(data)
+  } catch (error) {
+    console.error('Error fetching player stats:', error.message)
+  }
+})
+
+return {
+  players
+}
 </script>
 
 <style lang="scss" scoped></style>

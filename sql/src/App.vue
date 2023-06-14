@@ -34,13 +34,13 @@ import { RouterLink, RouterView } from 'vue-router'
 }
 
 .title {
-  color: #5c1ad9;
+  color: aquamarine;
 }
 .web-title {
   border-right: white 4px solid;
   padding: 30px;
   background-color: pink;
-  color: #5c1ad9;
+  color: antiquewhite;
   font-weight: bold;
 }
 
@@ -49,7 +49,7 @@ import { RouterLink, RouterView } from 'vue-router'
   padding: 5px;
   margin-top: 5%;
   border-radius: 1px;
-  background-color: #5c1ad9;
+  background-color: aqua;
   border-radius: 20px;
   color: white;
   font-size: 18px;
@@ -67,10 +67,6 @@ import { RouterLink, RouterView } from 'vue-router'
   justify-content: space-evenly;
 }
 
-.login {
-  margin-left: 100px;
-}
-
 .signup {
   margin-right: 100px;
 }
@@ -80,8 +76,8 @@ import { RouterLink, RouterView } from 'vue-router'
   padding: 5px;
   margin-top: 5%;
   border-radius: 1px;
-  background-color: #452784;
+  background-color: cornflowerblue;
   border-radius: 20px;
-  color: violet;
+  color: darkcyan;
 }
 </style>
