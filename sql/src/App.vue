@@ -43,23 +43,6 @@ export default {
     return { appReady }
   }
 }
-/*
-  }
-const email = ref('')
-const password = ref('')
-
-const signUp = async function () {
-  console.log(supabase.auth.signUp)
-  try {
-    console.log('ran')
-    await supabase.auth.signUp({
-      email: email.value,
-      password: password.value
-    })
-  } catch (error) {
-    console.log(error)
-  }
-}
 </script>
 
 <template>
